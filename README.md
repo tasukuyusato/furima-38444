@@ -15,54 +15,52 @@
 
 has_many :items
 has_many :comments
+has_one :users_items 
 
 ## items テーブル
 
 | Column                | Type       | Options     |
 | ------                | ------     | ----------- |
-| item_name             | text       | null: false |
+| item_name             | string     | null: false |
 | description           | text       | null: false |
-| category              | string     | null: false |
-| status                | string     | null: false |
-| delivery_charge       | string     | null: false |
-| sender                | string     | null: false |
-| shipping_days         | string     | null: false |
+| category_id           | integer    | null: false |
+| status_id             | integer    | null: false |
+| delivery_charge_id    | integer    | null: false |
+| prifecture_id         | integer    | null: false |
+| shipping_days_id      | integer    | null: false |
 | price                 | integer    | null: false |
 | user                  | references | null: false, foreign_key: true |
 
 
-
 has_many :comment
-belongs_to :users
+has_one  :users_items
+belongs_to :user
 
 
-## user_item テーブル
+## users_items テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | user   | references | null: false, foreign_key: true |
 | item   | references | null: false, foreign_key: true |
 
-belongs_to :items
-belongs_to :tags
+belongs_to :item
+belongs_to :user
+has_one :pay
 
-## pay テーブル
+## pays テーブル
 
 | Column     | Type       | Options                        |
-| -------    | ---------- | ------------------------------ |
-| creditcard | string     | null: false                    |
-| expiry     | string     | null: false                    |
-| code       | string     | null: false                    |
+| -------    | ---------- | ------------------------------ |                   
 | post_code  | string     | null: false                    |
-| prifecture | string     | null: false                    |
+| prifecture | integer    | null: false                    |
 | city       | string     | null: false                    |
 | address    | string     | null: false                    |
 | building   | string     |                                |
 | tel        | string     | null: false                    |
-| item   | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
 
-
-belongs_to :items
+belongs_to : users_items 
 
 ## comments テーブル
 
