@@ -15,7 +15,7 @@
 
 has_many :items
 has_many :comments
-has_one :users_items 
+has_many :users_items 
 
 ## items テーブル
 
@@ -33,7 +33,7 @@ has_one :users_items
 
 
 has_many :comment
-has_one  :users_items
+has_one  :user_item
 belongs_to :user
 
 
@@ -50,17 +50,18 @@ has_one :pay
 
 ## pays テーブル
 
-| Column     | Type       | Options                        |
-| -------    | ---------- | ------------------------------ |                   
-| post_code  | string     | null: false                    |
-| prifecture | integer    | null: false                    |
-| city       | string     | null: false                    |
-| address    | string     | null: false                    |
-| building   | string     |                                |
-| tel        | string     | null: false                    |
-| item       | references | null: false, foreign_key: true |
+| Column            | Type       | Options                        |
+| -------           | ---------- | ------------------------------ |                   
+| post_code         | string     | null: false                    |
+| prifecture_id     | integer    | null: false                    |
+| city              | string     | null: false                    |
+| address           | string     | null: false                    |
+| building          | string     |                                |
+| tel               | string     | null: false                    |
+| item              | references | null: false, foreign_key: true |
+| users_items       | references | null: false, foreign_key: true |
 
-belongs_to : users_items 
+belongs_to : user_item 
 
 ## comments テーブル
 
@@ -69,5 +70,5 @@ belongs_to : users_items
 | comment | text     |                                |
 | user    | references | null: false, foreign_key: true |
 
-belongs_to :items
-belongs_to :users
+belongs_to :item
+belongs_to :user
