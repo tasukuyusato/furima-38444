@@ -26,7 +26,7 @@ has_many :users_items
 | status_id             | integer    | null: false |
 | delivery_charge_id    | integer    | null: false |
 | prifecture_id         | integer    | null: false |
-| shipping_day_id      | integer    | null: false |
+| shipping_day_id       | integer    | null: false |
 | price                 | integer    | null: false |
 | user                  | references | null: false, foreign_key: true |
 
@@ -56,7 +56,7 @@ has_one :pay
 | address           | string     | null: false                    |
 | building          | string     |                                |
 | tel               | string     | null: false                    |
-| users_items       | references | null: false                    |
+| users_item         | references | null: false                      |
 
 belongs_to : user_item 
-
+    
