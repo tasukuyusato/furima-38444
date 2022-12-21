@@ -4,8 +4,8 @@ FactoryBot.define do
     password {Faker::Internet.password(min_length: 6)}
     password_confirmation {password}
     nickname  {Faker::Name.initials(number: 2)}
-    first_name {Faker::Name.initials(number: 2)}   
-    last_name {Faker::Name.initials(number: 2)}     
+    first_name {"侑"}   
+    last_name {"佐藤"}     
     first_name_kana {"カタ"} 
     last_name_kana  {"カナ"}
     birthday {Faker::Date.birthday}
