@@ -6,23 +6,28 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー新規登録' do
-    
-    it '全ての項目が入力されていれば登録できる' do
-      expect(@user).to be_valid 
+  
+    context 'ユーザ登録が成功する場合' do
+
+      it '全ての項目が入力されていれば登録できる' do
+        expect(@user).to be_valid 
+      end
+
     end
 
-    it 'ニックネームが空では登録できない' do
-      @user.nickname = ''
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Nickname can't be blank")
-    end
+    context 'ユーザ登録に失敗する場合' do
+      it 'ニックネームが空では登録できない' do
+        @user.nickname = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Nickname can't be blank")
+      end
 
-    it '英字のみのパスワードでは登録できない' do
-      @user.password = 'aaaaaaaa'
-      @user.password_confirmation = 'aaaaaaaa'
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Password is invalid")
-    end
+      it '英字のみのパスワードでは登録できない' do
+        @user.password = 'aaaaaaaa'
+        @user.password_confirmation = 'aaaaaaaa'
+        @user.valid?
+       expect(@user.errors.full_messages).to include("Password is invalid")
+      end
 
     it '数字のみのパスワードでは登録できない' do
       @user.password = '11111111'
@@ -134,5 +139,5 @@ RSpec.describe User, type: :model do
     end
 
   end
-
+ end
 end
