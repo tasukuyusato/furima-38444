@@ -15,7 +15,7 @@ class Item < ApplicationRecord
   validates :shipping_day_id,     numericality: { other_than: 1 , message: "can't be blank"} 
 
   # テーブルとのアソシエーション
-  has_one  :user_item
+  # has_one  :user_item
   belongs_to :user
   has_one_attached :image
 
