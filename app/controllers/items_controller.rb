@@ -18,11 +18,31 @@ class ItemsController < ApplicationController
     end 
   end
 
-    def show
+  def show
       @item = Item.find(params[:id])
-    end
-  
-  
+  end
+
+  def edit
+      @item = Item.find(params[:id])
+      unless @item.user == current_user
+        redirect_to  items_path
+      end
+  end 
+
+  def update
+      @item = Item.find(params[:id])
+        if @item.user != current_user
+           redirect_to  items_path
+        else
+           if
+              @item.update(item_params)
+              redirect_to item_path
+           else
+            render :edit
+           end
+        end
+  end
+
   private
   def item_params
     params.require(:item).permit(:item_name, :description, :category_id, :status_id, :delivery_charge_id, 
