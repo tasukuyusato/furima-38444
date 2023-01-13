@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
   end
 
   def redirect_to_path
-    if @item.user != current_user
+    if @item.user != current_user || @item.users_item != nil
             redirect_to  root_path
     end
   end

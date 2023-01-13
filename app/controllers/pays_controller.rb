@@ -1,5 +1,5 @@
 class PaysController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :create]
+  before_action :authenticate_user!, only: [:index]
   before_action :set_item, only: [:index, :create]
   before_action :redirect, only: [:index, :create]
 
