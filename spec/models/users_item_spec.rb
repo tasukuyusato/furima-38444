@@ -19,6 +19,12 @@ RSpec.describe UsersItemPay, type: :model do
     
     context '商品購入に失敗する場合' do
 
+      it "tokenが空では登録できないこと" do
+        @user_item_pay.token = nil
+        @user_item_pay.valid?
+        expect(@user_item_pay.errors.full_messages).to include("Token can't be blank")
+      end
+
       it '郵便番号が空では購入できない' do
         @user_item_pay.post_code = ''
         @user_item_pay.valid?
@@ -27,6 +33,12 @@ RSpec.describe UsersItemPay, type: :model do
 
       it '郵便番号が「３桁ハイフン４桁」でないと登録できない' do
         @user_item_pay.post_code = '00-000'
+        @user_item_pay.valid?
+       expect(@user_item_pay.errors.full_messages).to include("Post code 例）123-4567")
+      end
+
+      it '郵便番号にハイフンがないと登録できない' do
+        @user_item_pay.post_code = '0000000'
         @user_item_pay.valid?
        expect(@user_item_pay.errors.full_messages).to include("Post code 例）123-4567")
       end
@@ -71,6 +83,18 @@ RSpec.describe UsersItemPay, type: :model do
         @user_item_pay.tel = '000-0000-0000'
         @user_item_pay.valid?
         expect(@user_item_pay.errors.full_messages).to include("Tel is invalid")
+      end
+
+      it 'userが紐づいていなければ登録できない' do
+        @user_item_pay.user_id = ''
+        @user_item_pay.valid?
+        expect(@user_item_pay.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'itemが紐づいていなければ登録できない' do
+        @user_item_pay.item_id = nil
+        @user_item_pay.valid?
+        expect(@user_item_pay.errors.full_messages).to include("Item can't be blank")
       end
     end 
 

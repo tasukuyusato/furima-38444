@@ -4,12 +4,10 @@ class PaysController < ApplicationController
   before_action :redirect, only: [:index, :create]
 
   def index
-    @item  = Item.find(params[:item_id])
     @users_item_pay = UsersItemPay.new
   end
 
   def create
-    @item  = Item.find(params[:item_id])
     @users_item_pay = UsersItemPay.new(pay_params)
     if @users_item_pay.valid?
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]

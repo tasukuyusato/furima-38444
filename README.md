@@ -56,7 +56,7 @@ has_one :pay
 | address           | string     | null: false                    |
 | building          | string     |                                |
 | tel               | string     | null: false                    |
-| users_item         | references | null: false                      |
+| users_item        | references | null: false                      |
 
 belongs_to : user_item 
     
