@@ -15,6 +15,12 @@ RSpec.describe UsersItemPay, type: :model do
       it '全ての項目が入力されていれば登録できる' do
         expect(@user_item_pay).to be_valid 
       end
+
+      it '建物の項目が入力されていなくても登録できる' do
+        @user_item_pay.building = ''
+        expect(@user_item_pay).to be_valid 
+      end
+
     end
     
     context '商品購入に失敗する場合' do
