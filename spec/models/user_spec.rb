@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
       it '全ての項目が入力されていれば登録できる' do
         expect(@user).to be_valid 
       end
-
+      
     end
 
     context 'ユーザ登録に失敗する場合' do
