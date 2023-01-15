@@ -6,7 +6,7 @@ const payjp = Payjp(process.env.PAYJP_PUBLIC_KEY);
  const numberElement = elements.create('cardNumber')
  const cvcElement = elements.create('cardCvc')
  const expiryElement = elements.create('cardExpiry')
- //入力欄をDOM上に表示
+ //入力欄をDOM上に表示/
  numberElement.mount('#number')
  cvcElement.mount('#cvc') 
  expiryElement.mount('#exp-date')
